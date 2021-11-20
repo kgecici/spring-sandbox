@@ -8,10 +8,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
+
 @SpringBootApplication
 public class DemoApplication {
 
 	public static void main(String[] args) {
+		List<TestEnum> enumList = new ArrayList<>();
+		enumList.add(TestEnum.VALUE1);
+
+
 		ApplicationContext ctx = SpringApplication.run(DemoApplication.class, args);
 		ConstuctorController c = (ConstuctorController)ctx.getBean("constuctorController");
 		System.out.println(c.sayHello());
