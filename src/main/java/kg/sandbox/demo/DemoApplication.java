@@ -7,22 +7,22 @@ import kg.sandbox.demo.controller.SetterController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ImportResource;
 
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
 
+@ImportResource("kg-sandbox-bean-config.xml")
 @SpringBootApplication
 public class DemoApplication {
 
 	public static void main(String[] args) {
-		List<TestEnum> enumList = new ArrayList<>();
-		enumList.add(TestEnum.VALUE1);
-
-
 		ApplicationContext ctx = SpringApplication.run(DemoApplication.class, args);
 		ConstuctorController c = (ConstuctorController)ctx.getBean("constuctorController");
-		System.out.println(c.sayHello());
+		c.incrementCounter();
+		System.out.println(c.sayHello() + " Counter:" + c.getCounter());
+
+        c = (ConstuctorController)ctx.getBean("constuctorController");
+        c.incrementCounter();
+        System.out.println(c.sayHello() + " Counter:" + c.getCounter());
 
 
 		SetterController setterController = (SetterController)ctx.getBean("setterController");
