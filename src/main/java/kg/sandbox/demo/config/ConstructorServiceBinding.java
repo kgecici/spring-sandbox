@@ -9,9 +9,9 @@ import org.springframework.boot.context.properties.ConstructorBinding;
 @ConfigurationProperties("kg")
 public class ConstructorServiceBinding {
 
-    private String username;
+    private final String username;
 
-    private String password;
+    private final String password;
 
     public ConstructorServiceBinding(String username, String password) {
         this.username = username;
@@ -22,15 +22,9 @@ public class ConstructorServiceBinding {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+
 }
