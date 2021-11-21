@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class PrototypeBean {
 
+
     public PrototypeBean() {
         System.out.println("PrototypeBean is creating");
     }

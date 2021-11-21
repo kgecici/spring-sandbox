@@ -1,5 +1,6 @@
 package kg.sandbox.demo;
 
+import kg.sandbox.demo.config.PasswordConfig;
 import kg.sandbox.demo.controller.ConstuctorController;
 import kg.sandbox.demo.controller.HelloInterface;
 import kg.sandbox.demo.controller.I18nController;
@@ -43,6 +44,10 @@ public class DemoApplication {
         System.out.println(p1.getMessage());
         PrototypeBean p2  = (PrototypeBean)ctx.getBean("prototypeBean");
         System.out.println(p2.getMessage());
+
+
+        PasswordConfig pc  = (PasswordConfig) ctx.getBean(PasswordConfig.class);
+        System.out.println(pc.getUsername());
 	}
 
 }
