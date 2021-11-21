@@ -1,6 +1,8 @@
 package kg.sandbox.demo;
 
+import kg.sandbox.demo.config.ConstructorServiceBinding;
 import kg.sandbox.demo.config.PasswordConfig;
+import kg.sandbox.demo.config.PasswordConfig2;
 import kg.sandbox.demo.controller.ConstuctorController;
 import kg.sandbox.demo.controller.HelloInterface;
 import kg.sandbox.demo.controller.I18nController;
@@ -9,10 +11,12 @@ import kg.sandbox.demo.service.scopes.PrototypeBean;
 import kg.sandbox.demo.service.scopes.SingletonBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ImportResource;
 
 
+@EnableConfigurationProperties(ConstructorServiceBinding.class)
 @ImportResource("kg-sandbox-bean-config.xml")
 @SpringBootApplication
 public class DemoApplication {
@@ -45,9 +49,20 @@ public class DemoApplication {
         PrototypeBean p2  = (PrototypeBean)ctx.getBean("prototypeBean");
         System.out.println(p2.getMessage());
 
-
-        PasswordConfig pc  = (PasswordConfig) ctx.getBean(PasswordConfig.class);
+        System.out.println("---------  Password config from ext file -----------");
+        PasswordConfig pc  =  ctx.getBean(PasswordConfig.class);
         System.out.println(pc.getUsername());
+
+        System.out.println("---------  Password config bean -----------");
+        PasswordConfig2 pc2  = ctx.getBean(PasswordConfig2.class);
+        System.out.println(pc2.getUsername());
+
+
+        System.out.println("---------  ConstructorServiceBinding config bean -----------");
+        ConstructorServiceBinding pc3  = ctx.getBean(ConstructorServiceBinding.class);
+        System.out.println(pc3.getUsername());
+
+
 	}
 
 }
