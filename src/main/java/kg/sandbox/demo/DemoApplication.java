@@ -7,6 +7,7 @@ import kg.sandbox.demo.controller.ConstuctorController;
 import kg.sandbox.demo.controller.HelloInterface;
 import kg.sandbox.demo.controller.I18nController;
 import kg.sandbox.demo.controller.SetterController;
+import kg.sandbox.demo.service.ValueService;
 import kg.sandbox.demo.service.scopes.PrototypeBean;
 import kg.sandbox.demo.service.scopes.SingletonBean;
 import org.springframework.boot.SpringApplication;
@@ -62,7 +63,10 @@ public class DemoApplication {
         ConstructorServiceBinding pc3  = ctx.getBean(ConstructorServiceBinding.class);
         System.out.println(pc3.getUsername());
 
-
+        System.out.println("---------  Value Service bean -----------");
+        ValueService vs = ctx.getBean(ValueService.class);
+        System.out.println(vs.getValueFromFile());
+        System.out.println(vs.getValueFromFile2());
 	}
 
 }
